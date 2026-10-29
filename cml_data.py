@@ -173,7 +173,7 @@ def session_dataframe(task):
     would only see what has been downloaded so far)."""
     import pandas as pd
     task = _canonical_task(task)
-    pat = re.compile(rf"sub-([^/_]+)/ses-([^/_]+)/.*task-{task}_", re.IGNORECASE)
+    pat = re.compile(rf"sub-([^/_]+)/ses-([^/_]+)/.*task-{task}", re.IGNORECASE)
     if os.environ.get("CML_DATA_SOURCE", "").lower() == "local":         # scan the (complete) local copy
         keys = [str(f.relative_to(cache_dir() / dataset_of(task))) for f in (cache_dir() / dataset_of(task)).rglob("*_beh.tsv")]
     else:
